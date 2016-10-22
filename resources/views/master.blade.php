@@ -41,14 +41,14 @@
 
 			<!-- Left Menu -->
 			<ul class="nav navbar-nav navbar-left navbar-top-links visible-md-block visible-lg-block" style="display:hidden">
-				<li><a href="../"><i class="fa fa-home fa-fw"></i> @yield('UsuTipo') </a></li>
+				<li><a href="../"><i class="fa fa-home fa-fw"></i> {{ session('user')->UsuTipo}} </a></li>
 			</ul>
 
 			<!-- Right Menu -->
 			<ul class="nav navbar-right navbar-top-links">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-user fa-fw"></i> @yield('UsuUsuario') <b class="caret"></b>
+						<i class="fa fa-user fa-fw"></i> {{ session('user')->UsuUsuario}} <b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu dropdown-user">
 						<li>
@@ -56,7 +56,7 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="../php/log-out.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+							<a href="{{URL::action('UserController@logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 						</li>
 					</ul>
 				</li>
@@ -72,7 +72,7 @@
 
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1">
-						<h1 class="page-header">Asesores</h1>
+						<h1 class="page-header"> @yield('headersection')</h1>
 					</div>
 				</div>
 

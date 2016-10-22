@@ -1,11 +1,11 @@
 @extends('master')
 
 @section('UsuTipo')
-{{$user->UsuTipo}}	
+TIPO-DE-USUARIO
 @stop
 
 @section('UsuUsuario')
-{{$user->UsuUsuario}}	
+NOMBRE-DE-USUARIO
 @stop
 
 @section('sidebar')
@@ -24,32 +24,32 @@
 				</div>
 			</li>
 			<li>
-				<a href="index.php"><i class="fa fa-exchange fa-fw"></i> Cambiar sesión</a>
+				<a href="{{URL::to('administrador/cambiarusuario')}}"><i class="fa fa-exchange fa-fw"></i> Cambiar sesión</a>
 			</li>
 			<li>
-				<a href="usuarios.php"><i class="fa fa-users fa-fw"></i> Usuarios</a>
+				<a href="{{URL::to('administrador/usuarios')}}"><i class="fa fa-users fa-fw"></i> Usuarios</a>
 			</li>
 			<li>
-				<a href="bitacora.php"><i class="fa fa-wpforms fa-fw"></i> Bitácora</a>
+				<a href="{{URL::to('administrador/bitacora')}}"><i class="fa fa-wpforms fa-fw"></i> Bitácora</a>
 			</li>
 		</ul>
 	</div>
 </div>
 @stop
 
-@section('content')
+@section('headersection')
+BITACORA DE OPERACIONES
+@stop
 
+@section('content')
 <div class="row">
 	<div class="col-lg-10 col-lg-offset-1">
-
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 
 			</div>
 
-
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="dataTable_wrapper">
 
@@ -72,7 +72,8 @@
 								<td>{$v['accion']}</td>
 								<td>{$v['fecha']} </td>
 								<td>{$v['hora']}</td></tr>";
-							}*/
+							}
+							*/
 							?>
 
 						</tbody>

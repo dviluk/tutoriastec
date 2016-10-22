@@ -40,7 +40,7 @@
 						@endif
 						<hr>
 						<hr>
-						<form role="form" action="{{URL::action('AuthController@handleLogin')}}" method="post">
+						<form role="form" action="{{URL::action('UserController@login')}}" method="post">
 							<div class="form-group">
 								<img src="{{URL::asset('img/logo.png')}}" style="width: 100%">
 							</div>
