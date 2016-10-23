@@ -1,5 +1,29 @@
 <?php
 
+Route::get('/', function () {
+	if (session()->has('user')) {
+		if (session('user')->UsuTipo == 1) {
+			return redirect()->action('AdminController@changeUser');
+		}
+	} else {
+    	return view('login');
+	}
+});
+//Route::get('/', 'UserController@showLogin');
+Route::post('login', 'UserController@login');
+Route::get('destroyAllHumans', 'UserController@logout');
+
+// Administrador - vistas
+Route::get('administrador', 'AdminController@changeUser');
+Route::get('administrador/cambiarusuario', 'AdminController@changeUser');
+Route::get('administrador/usuarios', 'AdminController@users');
+Route::get('administrador/bitacora', 'AdminController@binnacle');
+// Administrador - acciones
+Route::get('administrador/verusuarios', 'AdminController@showUsers');
+Route::post('administrador/agregarusuario', 'AdminController@addUser');
+// Jefedepa - vistas
+Route::get('jefedepa', 'JefeDepaController@alumnos');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,22 +34,3 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('/', function () {
-	if (session()->has('user')) {
-		if (session('user')->UsuTipo == 1) {
-			return redirect()->action('AdminController@changeuser');
-		}
-	} else {
-    	return view('login');
-	}
-});
-//Route::get('/', 'UserController@showLogin');
-Route::post('login', 'UserController@login');
-Route::get('destroyAllHumans', 'UserController@logout');
-
-Route::get('administrador', 'AdminController@changeuser');
-Route::get('administrador/cambiarusuario', 'AdminController@changeuser');
-Route::get('administrador/usuarios', 'AdminController@users');
-Route::get('administrador/bitacora', 'AdminController@binnacle');
-
-

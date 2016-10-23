@@ -16,7 +16,7 @@
 				</div>
 			</li>
 			<li>
-				<a href="{{URL::to('administrador/cambiarusuario')}}"><i class="fa fa-exchange fa-fw"></i> Cambiar sesión</a>
+				<a href="{{URL::to('administrador/cambiarusuario')}}"><i class="fa fa-exchange fa-fw"></i> Cambiar usuario</a>
 			</li>
 			<li>
 				<a href="{{URL::to('administrador/usuarios')}}"><i class="fa fa-users fa-fw"></i> Usuarios</a>
@@ -34,29 +34,27 @@ INGRESE COMO ALGUN USUARIO
 @stop
 
 @section('content')
-<div class="row">
-	<div class="col-lg-10 col-lg-offset-1">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				Ingresar como:
-			</div>
-			<div class="panel-body">
-				<form role="form" action="actions/cambiar-usuario.php" method="post"> <div class="form-group">
-					<select class="form-control" name="type">
-						<option value="5">Alumno</option>
-						<option value="4">Docente</option>
-						<option value="2">Jefe de departemento</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Introduzca clave</label>
-					<input type="text" name="clave" placeholder="Clave" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-primary">Enviar</button>
-			</form>
-		</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Ingresar como:
 	</div>
-</div>
+	<div class="panel-body">
+		<form role="form" action="actions/cambiar-usuario.php" method="post"> 
+			<div class="form-group">
+				<select class="form-control" name="type">
+					<option value="5">Alumno</option>
+					<option value="4">Docente</option>
+					<option value="2">Jefe de departemento</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Introduzca clave</label>
+				<input type="text" name="clave" placeholder="Clave" class="form-control">
+			</div>
+			<input type="hidden" name="_token" >
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
 </div>
 @stop
 

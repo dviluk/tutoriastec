@@ -77,7 +77,11 @@
 				</div>
 
 				<!-- Content depends on user's types -->
-				@yield('content')
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1">
+						@yield('content')
+					</div>
+				</div>
 
 			</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
@@ -87,5 +91,7 @@
 	<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 	<script src="{{ URL::asset('js/metisMenu.min.js') }}"></script>
 	<script src="{{ URL::asset('js/startmin.js') }}"></script>
+
+	@yield('scripts')
 </body>
 </html>

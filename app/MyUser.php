@@ -13,4 +13,11 @@ class MyUser extends Model
     'idUsu'=>'required|exists:tbl_usuarios', 
     'UsuCon'=>'required'
     ];
+
+    public static $new_validation_rules = [
+        'idUsu'=>'required|exists:tbl_usuarios',
+        'UsuUsuario'=>'required',
+        'UsuCon'=>'required',
+        'UsuTipo'=>'required'
+    ];
 }

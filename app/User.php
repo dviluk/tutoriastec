@@ -31,4 +31,9 @@ class User extends Authenticatable
     'email'=>'required|email|exists:users', 
     'password'=>'required'
     ];
+
+    public static $new_validation_rules = [
+        'idUsu'=>'required|exists:users',
+        'UsuCon'=>'required'
+    ];
 }

@@ -1,13 +1,5 @@
 @extends('master')
 
-@section('UsuTipo')
-TIPO-DE-USUARIO
-@stop
-
-@section('UsuUsuario')
-NOMBRE-DE-USUARIO
-@stop
-
 @section('sidebar')
 <div class="navbar-default sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse">
@@ -24,7 +16,7 @@ NOMBRE-DE-USUARIO
 				</div>
 			</li>
 			<li>
-				<a href="{{URL::to('administrador/cambiarusuario')}}"><i class="fa fa-exchange fa-fw"></i> Cambiar sesión</a>
+				<a href="{{URL::to('administrador/cambiarusuario')}}"><i class="fa fa-exchange fa-fw"></i> Cambiar usuario</a>
 			</li>
 			<li>
 				<a href="{{URL::to('administrador/usuarios')}}"><i class="fa fa-users fa-fw"></i> Usuarios</a>
@@ -42,48 +34,43 @@ BITACORA DE OPERACIONES
 @stop
 
 @section('content')
-<div class="row">
-	<div class="col-lg-10 col-lg-offset-1">
-
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-
-			</div>
-
-			<div class="panel-body">
-				<div class="dataTable_wrapper">
-
-					<table class="table table-striped  table-hover" id="dataTables-bitacora">
-						<thead>
-							<tr>
-								<th>ID </th>
-								<th>Nombre de usuario</th>
-								<th>Accion</th>
-								<th>Fecha</th>
-								<th>Hora</th>
-							</tr>
-						</thead>
-						<tbody class="odd gradeX">
-							<?php
-							/*foreach ($bitacora as $key => $v) {
-								echo "<tr>
-								<td>{$v['id']}</td>
-								<td>{$v['usuario']}</td>
-								<td>{$v['accion']}</td>
-								<td>{$v['fecha']} </td>
-								<td>{$v['hora']}</td></tr>";
-							}
-							*/
-							?>
-
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-
-		</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		&nbsp;
 	</div>
+
+	<div class="panel-body">
+		<div class="dataTable_wrapper">
+
+			<table class="table table-striped  table-hover" id="dataTables-bitacora">
+				<thead>
+					<tr>
+						<th>ID </th>
+						<th>Nombre de usuario</th>
+						<th>Accion</th>
+						<th>Fecha</th>
+						<th>Hora</th>
+					</tr>
+				</thead>
+				<tbody class="odd gradeX">
+
+				@foreach($binnacle as $b)
+					<tr>
+						<td>{{$b->id}}</td>
+						<td>{{$b->usuario}}</td>
+						<td>{{$b->accion}}</td>
+						<td>{{$b->fecha}} </td>
+						<td>{{$b->hora}}</td>
+					</tr>
+				@endforeach
+
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
 </div>
+
 @stop
 
