@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\MyUser;
@@ -21,7 +20,7 @@ class UserController extends Controller
     	$data = $request->only('idUsu', 'UsuCon');
 
     	// Check if user exists
-		$user = MyUser::where('idUsu', $data['idUsu'])->where('UsuCon', $data['UsuCon'])->first();  
+		$user = MyUser::where('idUsu', $data['idUsu'])->where('UsuCon', $data['UsuCon'])->first();
 
 		if($user) {
 			if ($user->UsuTipo === 1) {

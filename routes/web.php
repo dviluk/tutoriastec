@@ -5,15 +5,19 @@ Route::get('/', function () {
 		if (session('user')->UsuTipo == 1) {
 			return redirect()->action('AdminController@changeUser');
 		}
+		if (session('user')->UsuTipo == 2) {
+			return redirect()->action('JefeDepaController@alumnos');
+		}
 	} else {
     	return view('login');
 	}
 });
 //Route::get('/', 'UserController@showLogin');
 Route::post('login', 'UserController@login');
-Route::get('destroyAllHumans', 'UserController@logout');
+Route::get('destroy', 'UserController@logout');
 
 // Administrador - vistas
+
 Route::get('administrador', 'AdminController@changeUser');
 Route::get('administrador/cambiarusuario', 'AdminController@changeUser');
 Route::get('administrador/usuarios', 'AdminController@users');
@@ -21,6 +25,10 @@ Route::get('administrador/bitacora', 'AdminController@binnacle');
 // Administrador - acciones
 Route::get('administrador/verusuarios', 'AdminController@showUsers');
 Route::post('administrador/agregarusuario', 'AdminController@addUser');
+Route::put('administrador/editarusuario', 'AdminController@editUser');
+Route::put('administrador/eliminarusuario', 'AdminController@delUser');
+
+
 // Jefedepa - vistas
 Route::get('jefedepa', 'JefeDepaController@alumnos');
 

@@ -35,8 +35,7 @@ BITACORA DE OPERACIONES
 
 @section('content')
 <div class="panel panel-primary">
-	<div class="panel-heading">
-		&nbsp;
+	<div class="panel-heading">	
 	</div>
 
 	<div class="panel-body">
@@ -54,7 +53,7 @@ BITACORA DE OPERACIONES
 				</thead>
 				<tbody class="odd gradeX">
 
-				@foreach($binnacle as $b)
+					@foreach($binnacle as $b)
 					<tr>
 						<td>{{$b->id}}</td>
 						<td>{{$b->usuario}}</td>
@@ -62,15 +61,24 @@ BITACORA DE OPERACIONES
 						<td>{{$b->fecha}} </td>
 						<td>{{$b->hora}}</td>
 					</tr>
-				@endforeach
+					@endforeach
 
 				</tbody>
 			</table>
 		</div>
-
 	</div>
-
 </div>
 
 @stop
 
+@section('scripts')
+<script src="{{URL::asset('js/dataTables/jquery.dataTables.min.js')}}"></script>
+<script src="{{URL::asset('js/dataTables/dataTables.bootstrap.min.js')}}"></script>
+<script>
+	$(document).ready(function() {
+		$('#dataTables-bitacora').DataTable({
+			responsive: true
+		});
+	});
+</script>
+@stop
