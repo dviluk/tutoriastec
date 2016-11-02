@@ -119,10 +119,9 @@ USUARIOS
 			</div>
 			<div class="modal-body">
 				<form role="form" id="mod-user-form">
-					<input type="hidden" name="idUsu" id="mod_idUsu" placeholder="No. Control" class="form-control">
-
+					<input type="hidden" name="idUsu" placeholder="No. Control" class="form-control">
 					<div class="form-group">
-						<input type="number" id="h_mod_idUsu" placeholder="No. Control" class="form-control" disabled>
+						<input type="number" name="temp-idUsu" id="h_mod_idUsu" placeholder="No. Control" class="form-control" disabled>
 					</div>
 					<div class="form-group">
 						<input type="text" name="UsuUsuario" placeholder="Nombre de usuario" class="form-control" required>
@@ -208,11 +207,15 @@ USUARIOS
 		}
 	}
 
-	function putIdInModal(id) {
+	function putIdInModal(id, usu, con) {
 		$('#mod-user-form')[0].reset();
-		var idUsu = id;
-		$("#mod_idUsu").val(idUsu);
-		$("#h_mod_idUsu").val(idUsu);
+		//$("#mod_idUsu").val(idUsu);
+		//$("#h_mod_idUsu").val(idUsu);
+
+		$("#mod-user-form :input[name='idUsu']").val(id);
+		$("#mod-user-form :input[name='temp-idUsu']").val(id);
+		$("#mod-user-form :input[name='UsuUsuario']").val(usu);
+		$("#mod-user-form :input[name='UsuCon']").val(con);
 	}
 
 	function modifyUser() {
@@ -222,9 +225,10 @@ USUARIOS
 				url: '{{URL::action('AdminController@editUser')}}',
 				data: $('#mod-user-form').serialize(),
 				success: function (data) {
-					$('#alerts').html('<div class="alert alert-'+data[0]+' fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+data[1]+'</div>');
+					/*$('#alerts').html('<div class="alert alert-'+data[0]+' fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+data[1]+'</div>');
 					$('#alerts').show();
-					showUsers();
+					showUsers();*/
+					console.log(data);
 				}
 			});
 		} else {

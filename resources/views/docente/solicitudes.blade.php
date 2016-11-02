@@ -1,0 +1,9 @@
+@extends('master')
+@section('sidebar')
+@stop
+@section('headercontent')
+@stop
+@section('content')
+@stop
+@section('scripts')
+@stop
