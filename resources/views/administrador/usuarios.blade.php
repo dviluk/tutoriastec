@@ -67,6 +67,7 @@ USUARIOS
 					</select>
 				</div>
 
+				
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<input type="button" class="btn btn-primary" value="Agregar" onclick="addUser()">
 			</form>
@@ -137,7 +138,8 @@ USUARIOS
 							<option value="2">Jefe de Departamento</option>
 						</select>
 					</div>
-					<input type="hidden" name="_token" value="{{csrf_token()}}">
+        				<!--{{method_field('put')}} no necesario por que lo estoy mandando con ajax pero siempre debe estar en los formularios-->
+					<!--<input type="hidden" name="_token" value="{{csrf_token()}}"> igual esta mierda! ya estas mandando el token por ajax-->
 				</form>
 			</div>
 
@@ -191,11 +193,13 @@ USUARIOS
 		var del = confirm("¿En realidad quiere eliminar al usuario " + id + "?", "-1");
 		if (del) {
 			$.ajax({
-				type: 'PUT',
+				//type: 'PUT',
+				type: 'post',
 				url: '{{URL::action('AdminController@delUser')}}',
 				data: {
 					idUsu: id,
-					_token : '{{csrf_token()}}'
+					_token : '{{csrf_token()}}',
+					_method : 'put'
 				},
 				success: function (data) {
 					$('#alerts').html('<div class="alert alert-'+data[0]+' fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+data[1]+'</div>');
